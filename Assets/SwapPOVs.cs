@@ -14,7 +14,23 @@ public class SwapPOVs : MonoBehaviour
         if (_POVs.Length < 1)
         {
             Debug.LogError("No POVs defined for POV Swap");
-        }
+        } else {
+            if (_POVIndex >= _POVs.Length)
+            {
+                Debug.LogWarning("Specified POV Index is outside of the range, setting to 0");
+            }
+
+            for (int i = 0; i < _POVs.Length; i++)
+            {
+                if (i == _POVIndex)
+                {
+                    _POVs[i].SetActive(true);
+                } else
+                {
+                    _POVs[i].SetActive(false);
+                }
+            }
+        } 
     }
 
     // Update is called once per frame

@@ -67,10 +67,14 @@ public class SwapPOVs : MonoBehaviour
     {
         if (_inInternal)
         {
+            _externalCamera.transform.position = _internalCamera.transform.position;
+            _externalCamera.transform.rotation = _internalCamera.transform.rotation;
             _externalCamera.SetActive(true);
             _internalCamera.SetActive(false);
         } else
         {
+            _internalCamera.transform.position = _externalCamera.transform.position;
+            _internalCamera.transform.rotation = _externalCamera.transform.rotation;
             _externalCamera.SetActive(false);
             _internalCamera.SetActive(true);
         }

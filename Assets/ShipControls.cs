@@ -28,6 +28,7 @@ public class ShipControls : MonoBehaviour
     {
         _vertical = Input.GetAxis("Vertical");
         _horizontal = Input.GetAxis("Horizontal");
+        // Debug.Log($"{_horizontal} - {_vertical}");
 
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -48,13 +49,13 @@ public class ShipControls : MonoBehaviour
         }//decrease speed
 
         Vector3 rotateH = new Vector3(0, _horizontal, 0);
-        transform.Rotate(rotateH * _rotSpeed * Time.deltaTime);
+        _shipModel.transform.Rotate(rotateH * _rotSpeed * Time.deltaTime);
 
         Vector3 rotateV = new Vector3(_vertical, 0, 0);
-        transform.Rotate(rotateV * _rotSpeed * Time.deltaTime);
+        _shipModel.transform.Rotate(rotateV * _rotSpeed * Time.deltaTime);
 
-        transform.Rotate(new Vector3(0, 0, -_horizontal * 0.2f), Space.Self);
+        _shipModel.transform.Rotate(new Vector3(0, 0, -_horizontal * 0.2f), Space.Self);
 
-        transform.position += transform.forward * _currentSpeed * Time.deltaTime;
+        _shipModel.transform.position += transform.forward * _currentSpeed * Time.deltaTime;
     }
 }

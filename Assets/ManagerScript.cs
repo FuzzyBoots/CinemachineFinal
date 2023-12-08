@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerScript : MonoBehaviour
 {
@@ -25,5 +27,10 @@ public class ManagerScript : MonoBehaviour
                 Application.OpenURL("about:blank");
 #endif
         }
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene("OutdoorsScene");
     }
 }

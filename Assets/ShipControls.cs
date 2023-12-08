@@ -28,7 +28,6 @@ public class ShipControls : MonoBehaviour
     {
         _vertical = Input.GetAxis("Vertical");
         _horizontal = Input.GetAxis("Horizontal");
-        // Debug.Log($"{_horizontal} - {_vertical}");
 
         if (Input.GetKeyDown(KeyCode.T))
         {

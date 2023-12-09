@@ -11,6 +11,7 @@ public class ShipControls : MonoBehaviour
     private float _horizontal;
     [SerializeField] private float _maxRotate;
     [SerializeField] private GameObject _shipModel;
+    [SerializeField] private float _maxSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +33,9 @@ public class ShipControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             _currentSpeed++;
-            if (_currentSpeed > 4)
+            if (_currentSpeed > _maxSpeed)
             {
-                _currentSpeed = 4;
+                _currentSpeed = _maxSpeed;
             }
         }//increase speed
 

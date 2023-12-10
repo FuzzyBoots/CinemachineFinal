@@ -1,11 +1,9 @@
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManagerScript : MonoBehaviour
 {
@@ -13,11 +11,7 @@ public class ManagerScript : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera _endCamera;
 
     [SerializeField] private TMP_Text _gameOverText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject _replayButton;
 
     // Update is called once per frame
     void Update()
@@ -49,5 +43,13 @@ public class ManagerScript : MonoBehaviour
     {
         _gameOver = true;
         _gameOverText.enabled = true;
+        _replayButton.SetActive(true);
+    }
+
+    public void ReplayTimeline (PlayableDirector _director)
+    {
+        _replayButton.SetActive(false);
+        _director.Stop();
+        _director.Play();
     }
 }

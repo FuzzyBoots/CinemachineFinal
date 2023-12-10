@@ -1,11 +1,18 @@
+using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ManagerScript : MonoBehaviour
 {
+    bool _gameOver = false;
+    [SerializeField] CinemachineVirtualCamera _endCamera;
+
+    [SerializeField] private TMP_Text _gameOverText;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +34,20 @@ public class ManagerScript : MonoBehaviour
                 Application.OpenURL("about:blank");
 #endif
         }
+
+        if (_gameOver && Input.GetKeyDown(KeyCode.R)) {
+            LoadGameScene("SpaceIntro");
+        }
     }
 
-    public void LoadGameScene()
+    public void LoadGameScene(string sceneName)
     {
-        SceneManager.LoadScene("OutdoorsScene");
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void GameOver()
+    {
+        _gameOver = true;
+        _gameOverText.enabled = true;
     }
 }
